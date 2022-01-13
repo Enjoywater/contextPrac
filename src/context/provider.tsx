@@ -49,7 +49,7 @@ const reducer = (state: InitialStateType, action: ActionType) => {
 
 function CountProvider({ children }: PropsType): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
+
   const increaseCount = (): void => {
     dispatch({ type: 'INCREASE_COUNT', payload: state.count + 1 });
   };
