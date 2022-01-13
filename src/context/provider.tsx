@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import { produce } from 'immer';
 
 type PropsType = {
   children: JSX.Element;
@@ -34,13 +35,13 @@ const CountContext = createContext(defaultCount);
 const reducer = (state: InitialStateType, action: ActionType) => {
   switch (action.type) {
     case 'INCREASE_COUNT':
-      return {
-        count: action.payload,
-      };
+      return produce(state, (draft) => {
+        draft.count = action.payload;
+      });
     case 'DECREASE_COUNT':
-      return {
-        count: action.payload,
-      };
+      return produce(state, (draft) => {
+        draft.count = action.payload;
+      });
 
     default:
       return state;
